@@ -28,27 +28,8 @@ function entrar() {
 
     listaUser = JSON.parse(localStorage.getItem('listaUser'))
 
-    listaUser.forEach((item) => {
-        if(usuario.value == item.userCad && senha.value == item.senhaCad){
-            userValid = {
-                nome: item.nomeCad,
-                user: item.userCad,
-                senha: item.senhaCad
-            }
-        }
-    })
 
-    
-    if(usuario.value == userValid.user && senha.value == userValid.senha){
-        window.location.href = 'inicio.html'
-
-       let token = Math.random().toString(16)
-       localStorage.setItem('token', token)
-
-       localStorage.setItem('userLogado', JSON.stringify(userValid))
-
-    }  
-    if ((usuario.value == userValid.user && senha.value == userValid.senha) == null) {
+    if (listaUser == null){
         userLabel.setAttribute('style', 'color: red')
         usuario.setAttribute('style', 'border-color: red')
         senhaLabel.setAttribute('style', 'color: red')
@@ -57,8 +38,31 @@ function entrar() {
         msgError.innerHTML = 'Usuário ou senha incorretos'
         usuario.focus()
         senha.focus()
+    } else {
+        listaUser.forEach((item) => {
+            if(usuario.value == item.userCad && senha.value == item.senhaCad){
+                userValid = {
+                    nome: item.nomeCad,
+                    user: item.userCad,
+                    senha: item.senhaCad
+                }
+            } 
+        })
     }
+
+
     
+
+    if(usuario.value == userValid.user && senha.value == userValid.senha){
+        window.location.href = 'inicio.html'
+
+       let token = Math.random().toString(16)
+       localStorage.setItem('token', token)
+
+       localStorage.setItem('userLogado', JSON.stringify(userValid))
+
+    } 
+
     else {
         userLabel.setAttribute('style', 'color: red')
         usuario.setAttribute('style', 'border-color: red')
