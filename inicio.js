@@ -6,7 +6,7 @@ let logado = document.querySelector('#logado')
 
 if (localStorage.getItem('token') == null){
     alert('Você precisa estar logado para acessar está página')
-    window.location.href = 'http://127.0.0.1:5500/index.html'
+    window.location.href = 'https://cadastro-login.vercel.app/index.html'
 } else {
     logado.innerHTML = `Olá ${userLogado.nome}`
 }
@@ -16,5 +16,5 @@ if (localStorage.getItem('token') == null){
 function sair(){
     localStorage.removeItem('token')
     localStorage.removeItem('userLogado')
-    window.location.href = 'http://127.0.0.1:5500/index.html'
+    window.location.href = 'https://cadastro-login.vercel.app/index.html'
 }
