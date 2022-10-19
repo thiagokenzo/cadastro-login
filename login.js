@@ -48,6 +48,16 @@ function entrar() {
        localStorage.setItem('userLogado', JSON.stringify(userValid))
 
     }  
+    if ((usuario.value == userValid.user && senha.value == userValid.senha) == null) {
+        userLabel.setAttribute('style', 'color: red')
+        usuario.setAttribute('style', 'border-color: red')
+        senhaLabel.setAttribute('style', 'color: red')
+        senha.setAttribute('style', 'border-color: red')
+        msgError.setAttribute('style', 'display: block')
+        msgError.innerHTML = 'Usuário ou senha incorretos'
+        usuario.focus()
+        senha.focus()
+    }
     
     else {
         userLabel.setAttribute('style', 'color: red')
